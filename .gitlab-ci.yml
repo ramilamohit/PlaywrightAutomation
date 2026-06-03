@@ -3,24 +3,26 @@ image: mcr.microsoft.com/playwright:v1.55.0-noble
 stages:
   - test
 
-.default-test:
+web-tests:
+  stage: test
+  script:
+    - npm ci
+    - npm run webTests
   artifacts:
     when: always
+    expire_in: 7 days
     paths:
       - playwright-report/
       - test-results/
 
-web-tests:
-  stage: test
-  extends: .default-test
-  script:
-    - npm ci
-    - npm run webTests
-
 api-tests:
   stage: test
-  extends: .default-test
   script:
     - npm ci
     - npm run APITests
-
+  artifacts:
+    when: always
+    expire_in: 7 days
+    paths:
+      - playwright-report/
+      - test-results/
