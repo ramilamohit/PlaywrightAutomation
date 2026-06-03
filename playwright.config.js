@@ -16,7 +16,7 @@ const config = ({
   use: {
 
     browserName: 'chromium',
-    headless: false,
+    headless: true,
     screenshot: 'on',//for every step the screenshot will be taken when screebshot is 'on'
     //trace: 'retain-on-failure'//trace zip file will be generated only on failure// saves the memory
     //trace: 'off' //no trace file will be generated
