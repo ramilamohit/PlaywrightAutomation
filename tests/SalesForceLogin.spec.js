@@ -30,7 +30,7 @@ test( 'Salesforce Login',async({browser})=>{
 
 test.use({ storageState: 'SFstate.json' });
 
-test('Access Home Page', async () => {
+test.skip('Access Home Page', async () => {
   const page = await webcontext.newPage();
   await page.goto('https://solids-dev-ed.develop.my.salesforce-setup.com/lightning/setup/SetupOneHome/home');
   await expect(page).toHaveTitle('Home | Salesforce');

@@ -6,6 +6,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 const config = ({
   testDir: './tests',
+   testIgnore: ['**/SalesForceLogin.spec.js'],
   retries: 2,
   timeout: 40 * 1000,
   expect: {

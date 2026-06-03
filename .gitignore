@@ -4,5 +4,7 @@ node_modules/
 /test-results/
 /playwright-report/
 /blob-report/
+allure-results/
 /playwright/.cache/
-/SFstate.json
+SFstate.json
+state.json

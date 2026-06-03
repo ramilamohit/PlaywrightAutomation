@@ -1,0 +1,25 @@
+image: mcr.microsoft.com/playwright:v1.55.0-noble
+
+stages:
+  - test
+
+.default-test:
+  artifacts:
+    when: always
+    paths:
+      - playwright-report/
+      - test-results/
+
+web-tests:
+  stage: test
+  extends: .default-test
+  script:
+    - npm ci
+    - npm run webTests
+
+api-tests:
+  stage: test
+  extends: .default-test
+  script:
+    - npm ci
+    - npm run APITests
