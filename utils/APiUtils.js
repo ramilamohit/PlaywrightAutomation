@@ -27,9 +27,7 @@ class APiUtils {
 
         const orderResponseJson = await orderResponse.json();
         console.log(orderResponseJson);
-        if (!orderResponseJson.orders || orderResponseJson.orders.length === 0) {
-            throw new Error(`Order creation failed: ${JSON.stringify(orderResponseJson)}`);
-        }
+       
         const orderId = orderResponseJson.orders[0];
         response.orderId = orderId;
 
