@@ -1,7 +1,7 @@
 const { test, expect, request } = require('@playwright/test');
 const { APiUtils } = require('../utils/APiUtils');
 const loginPayLoad = { userEmail: "ramilabala@gmail.com", userPassword: "Studying@2025" };
-const orderPayLoad = { orders: [{ country: "Egypt", productOrderedId: "68a961459320a140fe1ca57a" }] };//product ID must be from URL or Product Details
+const orderPayLoad = { orders: [{ country: "India", productOrderedId: "6960ea76c941646b7a8b3dd5" }] };//product ID must be from URL or Product Details
 //these payloads are test data. 
 
 //Test case 
@@ -25,6 +25,7 @@ test('@API Place the order', async ({ page }) => {
         //If the info in Session storage, window.sessionStorage.setItem()
     }, response.token);
     await page.goto("https://rahulshettyacademy.com/client");
+    
     await page.locator("button[routerlink*='myorders']").click();
     await page.locator("tbody").waitFor();
     const rows = await page.locator("tbody tr");
@@ -39,7 +40,7 @@ test('@API Place the order', async ({ page }) => {
     }
     const orderIdDetails = await page.locator(".col-text").textContent();
     console.log(orderIdDetails);
-    //await page.pause();
+    
     expect(response.orderId.includes(orderIdDetails)).toBeTruthy();
 
 });
