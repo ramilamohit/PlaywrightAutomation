@@ -20,8 +20,9 @@ test('@Web Security test request intercept', async ({ page }) => {
 
     await page.locator("button[routerlink*='myorders']").click();
     //Intercepting the request call with route.continue() method
+    //before hit the server(before sending to browser), we intercept the request - fake product ID
     await page.route("https://rahulshettyacademy.com/api/ecom/order/get-orders-details?id=*",
-        route => route.continue({ url: 'https://rahulshettyacademy.com/api/ecom/order/get-orders-details?id=621661f884b053f6765465b6' }))//before hit the server(before sending to browser), we intercept the request - fake product ID
+        route => route.continue({ url: 'https://rahulshettyacademy.com/api/ecom/order/get-orders-details?id=621661f884b053f676546587' }))
     await page.locator("button:has-text('View')").first().click();
     await expect(page.locator("p").last()).toHaveText("You are not authorize to view this order");
 

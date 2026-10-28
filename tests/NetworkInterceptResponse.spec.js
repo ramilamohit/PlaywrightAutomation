@@ -1,7 +1,8 @@
 const { test, expect, request } = require('@playwright/test');
 const { APiUtils } = require('../utils/APiUtils');
 const loginPayLoad = { userEmail: "ramilabala@gmail.com", userPassword: "Studying@2025" };
-const orderPayLoad = { orders: [{ country: "India", productOrderedId: "68a961459320a140fe1ca57a" }] };
+//When you click view on the product, in url you can find the productid
+const orderPayLoad = { orders: [{ country: "India", productOrderedId: "6960ea76c941646b7a8b3dd5" }] };
 const fakePayLoadOrders = { data: [], message: "No Orders" };
  
 let response;
@@ -28,7 +29,7 @@ test('No Order Message', async ({ page }) => {
   await page.route("https://rahulshettyacademy.com/api/ecom/order/get-orders-for-customer/*",//here wildcard is used for accepting any account- anything in the wildcard *
     async route => { //this route has all request, response
         //intercepting response - API response ->{playwright - fakeresponse(mocking)} browser -> render data on front end 
-      const response = await page.request.fetch(route.request());//turning the web mode to API mode -page.request 
+      const response = await page.request.fetch(route.request());//browser sends the request -> route.request() captures the request -> page.request.fetch() resends the same request to Playwright's APIRequestContext-> get response from server ->route.fulfill() sends the modified data response back to the browser
       //JSON -JavaScript Object Notation
       let body = JSON.stringify(fakePayLoadOrders);//converting java object into JSON format
       console.log(body);

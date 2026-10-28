@@ -12,7 +12,7 @@ Before(async function () {// before each scenario this method will be executed
     this.poManager = new POManager(this.page);
 });
 
-After({tags: "@Validation"},function () { // after each scenario with @tag this method will be executed
+After({tags: "@Validation"},function () { // after each scenario with @tag this method will be executed //in playwright test-> it's beforeEach() and afterEach()
   console.log("After hook executed after each Scenario");
 });
 

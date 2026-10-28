@@ -9,8 +9,8 @@ const {test, expect}= require('@playwright/test');
 
 test('visual',async({page})=>
 {
-    //await page.goto("https://flightaware.com/");
-    await page.goto("https://portal.tekarch.com/");
+    await page.goto("https://flightaware.com/");
+    //await page.goto("https://portal.tekarch.com/");
     //First time the test will fail, because the original image is not there
     expect(await page.screenshot()).toMatchSnapshot('original.png');
 });

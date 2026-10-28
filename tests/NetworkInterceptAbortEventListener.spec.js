@@ -22,8 +22,8 @@ test('Network Intercept Abort', async({browser})=>
     page.route('**/*.{jpg,png,jpeg}',route => route.abort());
 
     //Event Listener - To listen request and response with url
-    page.on('request', request => console.log(request.url()));
-    page.on('response', response=> console.log(response.url,response.status()));
+    //page.on('request', request => console.log(request.url()));
+    //page.on('response', response=> console.log(response.url,response.status()));
     await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
     console.log(await page.title()); 
     
@@ -32,7 +32,7 @@ test('Network Intercept Abort', async({browser})=>
     const signInBtn = page.locator('#signInBtn');
     const cardTitles = page.locator(".card-body a");
     await userName.fill("rahulshetty");//wrong username 
-    await page.locator("[type='password']").fill("learning");
+    await page.locator("[type='password']").fill("Learning@830$3mK2");// new password Learning@830$3mK2
     await page.locator('#signInBtn').click();
     
     //This error message disappears quickly. So watch the dom the css style - display style=block

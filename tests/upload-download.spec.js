@@ -10,7 +10,7 @@ async function writeExcelTest(searchText, replaceText, change, filePath) {
   const output = readExcel(worksheet, searchText); // not async
  
   const cell = worksheet.getCell(output.row, output.column + change.colChange);
-  cell.value = replaceText;
+  cell.value = replaceText;//replacing cell value [row index, column index]
   await workbook.xlsx.writeFile(filePath);
 }
  
@@ -24,7 +24,7 @@ function readExcel(worksheet, searchText) {
       }
     });
   });
-  return output;
+  return output; //returning indexes
 }
  
 //update Mango Price to 350. 

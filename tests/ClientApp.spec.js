@@ -9,7 +9,7 @@ test('Browser Context-Validating Error message in Login Page', async({page})=>
     await page.locator('#userPassword').fill("Studying@2025");
     await page.locator("[value='Login']").click();
     //networkidle is working. But it is discouraged because of it's flakky.Maybe starts loading delay.
-   // await page.waitForLoadState('networkidle');
+    //await page.waitForLoadState('networkidle');
    //waitFor() works only for unique element.
    //wait
     await page.locator(".card-body b").first().waitFor();

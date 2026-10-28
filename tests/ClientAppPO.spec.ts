@@ -6,7 +6,7 @@ import { POManager } from '../pageobjects_ts/POManager';
 const dataset = JSON.parse(JSON.stringify(require("../test-data/placeorderTestData.json")));
 
 for (const data of dataset) { //Parameterization using json file
-    test.only(`@Web Client App login ${data.productName}`, async ({ page }) => {//no two test can have same name
+    test(`@Web Client App login ${data.productName}`, async ({ page }) => {//no two test can have same name
         //js file- Login js, DashboardPage
         //test data is in json file
 
@@ -46,7 +46,7 @@ for (const data of dataset) { //Parameterization using json file
 }
 
 // create the test data for all test cases by creating the custom test and properties, so we can give the feature
-customTest(`Client App login `, async ({ page, testDataForOrders }) => {
+customTest.only(`Client App login `, async ({ page, testDataForOrders }) => {
     //test data is in test-base file stored as the custom feature
     // customize the test behaviour
     //custom feature can be created by extending the test and creating the properties
